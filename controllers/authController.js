@@ -2,7 +2,8 @@ const Joi = require('joi');
 const userModel = require('../models/user_models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {generateToken} = require('../utils/generateToken')
+const {generateToken} = require('../utils/generateToken');
+const success = require('../middleware/success')
 
 module.exports.registerUser = async(req, res) => {
 
@@ -37,11 +38,38 @@ module.exports.registerUser = async(req, res) => {
 
         let token = generateToken(newUser);
 
-        res.cookie('tokens', token);
+        res.cookie('token', token);
 
-        return res.send('user created successfully');
+        req.flash('success', 'Account created successfully 🎉');
+
+        return res.redirect('/');
 
     } catch (err) {
         return res.status(500).send(err.message);
     }
+}
+
+module.exports.loginUser = async(req , res) =>{
+    let {email , password} = req.body;
+
+    let user = await userModel.findOne({email : email});
+    if(!user) return res.status(401).send('Wrong Email & Password');
+
+    bcrypt.compare(password, user.password, (err, result) => {
+    if (err) return res.status(500).send('Something went wrong');
+
+    if (result) {
+        let token = generateToken(user);
+        res.cookie('token', token);
+        return res.send('user loggdin ') // IMPORTANT
+    }
+
+    return res.status(401).send('Wrong Email & Password');
+});
+
+}
+
+module.exports.logout = (req , res)=>{
+    res.cookie('token' , "");
+    res.redirect('/');
 }
