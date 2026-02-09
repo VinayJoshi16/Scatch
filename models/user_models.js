@@ -5,7 +5,10 @@ const userSchema = mongoose.Schema({
     fullname : String,
     email : String,
     password : String,
-    cart : Array,
+    cart : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref :'product'
+    }],
     order : Array,
     contact : Number,
     picture :String 

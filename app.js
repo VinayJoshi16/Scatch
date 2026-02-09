@@ -51,6 +51,12 @@ app.use('/product', productsRouter);
 app.use('/products', productsRouter);  // support both /product and /products
 
 // ================== SERVER ==================
+
+
+app.get('/profile' , (req,res)=>{
+    res.render('profile');
+});
+
 app.listen(3000, () => {
     console.log("Server running on port 3000 🚀");
 });

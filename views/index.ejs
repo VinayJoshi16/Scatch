@@ -1,14 +1,14 @@
 <%- include('./partials/header') %>
 
     <% if (typeof success !== 'undefined' && success && success.length > 0) { %>
-        <div id="flash-success" class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-green-500">
+        <div id="flash-style" class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-green-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= success[0] %>
             </span>
         </div>
     <% } %>
     <% if (typeof error !== 'undefined' && error && error.length > 0) { %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-red-500">
+        <div id="flash-style" class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-red-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= Array.isArray(error) ? error[0] : error %>
             </span>

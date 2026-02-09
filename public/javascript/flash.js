@@ -1,5 +1,5 @@
 setTimeout(() => {
-    const flash = document.getElementById("flash-success");
+    const flash = document.getElementById("flash-style");
     if(flash){
         flash.style.transition = "opacity 0.5s";
         flash.style.opacity = "0";

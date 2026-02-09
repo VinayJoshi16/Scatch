@@ -20,8 +20,8 @@ module.exports = async (req , res , next) => {
 
         next();
 
-    } catch {
+    } catch(err) {
         req.flash('error','Something went wrong');
         return res.redirect('/');
     }
-}
+};
