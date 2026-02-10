@@ -1,5 +1,5 @@
 <%- include('./partials/header') %>
-<div class="w-full h-screen flex">
+<div class="w-full h-screen flex bg-zinc-100">
 
     <!-- LEFT SIDE -->
     <div class="w-1/4 h-full flex flex-col  text-white rounded-2xl shadow-lg">
@@ -19,7 +19,7 @@
     <div class="px-6 text-center border-b border-zinc-700 pb-6">
         <h3 class="text-xl text-black font-semibold">user name</h3>
         <p class="text-sm text-zinc-400">user@gmail.com</p>
-        <p class="text-sm mt-2">🏳️‍🌈 Country</p>
+        <p class="text-sm mt-2">📍Country</p>
     </div>
 
     <!-- Information Section -->
@@ -43,15 +43,39 @@
 
 
     <!-- RIGHT SIDE -->
-    <div class="w-3/4 h-full bg-zinc-800 flex justify-center items-center">
+    <div class="w-3/4 h-full">
 
-        <!-- Example Form -->
-        <div class="w-[60%] text-white">
+    <!-- Buttons -->
+<div class="w-[80%] text-white flex justify-between mt-10 px-8">
 
-        </div>
+    <button onclick="loadSection('cart')"
+    class="bg-pink-400 px-3 py-2 rounded-lg text-sm border-2 border-pink-600">
+        cart
+    </button>
 
-    </div>
+    <button onclick="loadSection('order')"
+    class="bg-pink-400 px-3 py-2 rounded-lg text-sm border-2 border-pink-600">
+        order
+    </button>
 
+    <button onclick="loadSection('wishlist')"
+    class="bg-pink-400 px-3 py-2 rounded-lg text-sm border-2 border-pink-600">
+        ❤️ wishlist
+    </button>
+
+</div>
+
+
+<!-- Content Area -->
+<div class="w-[80%] px-8 mt-10">
+
+   <div id="content"
+class="hidden p-10 h-[500px] rounded-lg overflow-y-auto hide-scrollbar">
+</div>
+
+
+</div>
+</div>
 </div>
 
 <%- include('./partials/footer') %>
